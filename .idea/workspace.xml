@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): changed config files">
-      <change afterPath="$PROJECT_DIR$/layouts/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/books/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/main.ts" afterDir="false" />
+    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): added base layout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/books/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/books/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -72,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/Users/aleksejvinogradov/Documents/HomeProjects/plan9-next-test",
+    "last_opened_file_path": "/Users/aleksejvinogradov/Documents/HomeProjects/plan9-next-test/pages/books",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "/Users/aleksejvinogradov/Documents/HomeProjects/plan9-next-test/node_modules/eslint",
@@ -84,6 +78,16 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages/books" />
+      <recent name="$PROJECT_DIR$/pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages/books" />
+      <recent name="$PROJECT_DIR$/pages" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -110,7 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1665252947491</updated>
       <workItem from="1665252949086" duration="1673000" />
-      <workItem from="1665254765565" duration="3803000" />
+      <workItem from="1665254765565" duration="9813000" />
     </task>
     <task id="LOCAL-00001" summary="init next app">
       <created>1665254926618</created>
@@ -147,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665256906214</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(): added base layout">
+      <created>1665258617629</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1665258617629</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +181,8 @@
     <MESSAGE value="feat(): init env" />
     <MESSAGE value="feat(): init lint &amp; prettier &amp; tw" />
     <MESSAGE value="feat(): changed config files" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(): changed config files" />
+    <MESSAGE value="feat(): added base layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(): added base layout" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

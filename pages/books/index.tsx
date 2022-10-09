@@ -1,6 +1,7 @@
 import {useState} from "react";
-import axios from "axios";
 import Intersection from "@components/app/IntersectionObserver";
+import {fetchBooks} from "../../api/restServices/books";
+import Link from "next/link";
 
 export default function Books() {
     const [books, setBooks] = useState<any>([]);
@@ -8,13 +9,18 @@ export default function Books() {
     let count = 0;
     let page = 1;
 
-    const fetchBooks = async () => {
-        const {data} = await axios.get('https://gutendex.com/books/',{params:{page}})
-        count = data.count
+    const getBooks = async () => {
+        const result = await fetchBooks({page:page})
+        count = result.count
         if(books.length < count){
-            setBooks(books => [...books,...data.results])
+            setBooks(books => [...books,...result.results])
             page += 1
         }
+    }
+
+    const getBook = async (id:string) => {
+        const result = await fetchBooks({ids:id})
+        console.log(result)
     }
 
     return (
@@ -22,13 +28,15 @@ export default function Books() {
         <ul>
             {books.map((item:any) => {
                 return (
-                    <li key={item.id}>
-                        {item.id}
-                    </li>
+                  <Link key={item.id+3} href={`/books/${item.id}`}>
+                      <li key={item.id} onClick={() => getBook(item.id)}>
+                          {item.id}
+                      </li>
+                  </Link>
                 )
             })}
         </ul>
-        <Intersection emit={fetchBooks}/>
+        <Intersection emit={getBooks}/>
     </>
     )
 }

@@ -1,27 +1,35 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import axios from "axios";
+import Intersection from "@components/app/IntersectionObserver";
 
 export default function Books() {
-    const [books, setBooks] = useState([]);
+    const [books, setBooks] = useState<any>([]);
 
-     useEffect(() => {
-        const fetchBooks = async () => {
-            const {data: {results}} = await axios.get('https://gutendex.com/books/')
-            setBooks(results)
+    let count = 0;
+    let page = 1;
+
+    const fetchBooks = async () => {
+        const {data} = await axios.get('https://gutendex.com/books/',{params:{page}})
+        count = data.count
+        if(books.length < count){
+            setBooks(books => [...books,...data.results])
+            page += 1
         }
-        fetchBooks();
-    },[])
+    }
 
     return (
+    <>
         <ul>
             {books.map((item:any) => {
                 return (
-                <li key={item.id}>
-                    {item.id}
-                </li>
+                    <li key={item.id}>
+                        {item.id}
+                    </li>
                 )
             })}
         </ul>
+        <Intersection emit={fetchBooks}/>
+    </>
     )
 }
 

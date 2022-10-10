@@ -3,7 +3,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  basePath: '/books'
 }
 
 module.exports = nextConfig

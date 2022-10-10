@@ -1,7 +1,8 @@
-import {useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import Intersection from "@components/app/IntersectionObserver";
 import {fetchBooks, fetchSearchBook} from "../../api/restServices/books";
 import useDebounce from "../../hooks/UseDebounce";
+import LocaleProvider from "@components/localeProvider";
 import Link from "next/link";
 
 export default function Books() {
@@ -31,6 +32,12 @@ export default function Books() {
 
     const debouncedHandler = useDebounce(handler,1500)
 
+    const {locale} = useContext(LocaleProvider)
+
+    useEffect(() => {
+        console.log(locale)
+    },[locale])
+
     return (
     <>
         <p>{search}</p>
@@ -38,11 +45,11 @@ export default function Books() {
         <ul>
             {books.map((item:any) => {
                 return (
-                  <Link key={item.id+3} href={`/books/${item.id}`}>
-                      <li key={item.id} onClick={() => getBook(item.id)}>
-                          {item.id}
-                      </li>
-                  </Link>
+                    <Link key={item.id+3} href={`/books/${item.id}`}>
+                        <li key={item.id} onClick={() => getBook(item.id)}>
+                            {item.id}
+                        </li>
+                    </Link>
                 )
             })}
         </ul>

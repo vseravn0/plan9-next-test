@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export const fetchBooks = async (params:any):Promise<any> => {
+     console.log(params)
      const {data:{count,results}} =  await axios.get('https://gutendex.com/books/', {params})
      return {count,results}
 }

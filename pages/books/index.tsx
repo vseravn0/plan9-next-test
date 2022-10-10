@@ -1,10 +1,12 @@
 import {useState} from "react";
 import Intersection from "@components/app/IntersectionObserver";
-import {fetchBooks} from "../../api/restServices/books";
+import {fetchBooks, fetchSearchBook} from "../../api/restServices/books";
+import useDebounce from "../../hooks/UseDebounce";
 import Link from "next/link";
 
 export default function Books() {
     const [books, setBooks] = useState<any>([]);
+    const [search, setSearch] = useState<any>('');
 
     let count = 0;
     let page = 1;
@@ -23,8 +25,16 @@ export default function Books() {
         console.log(result)
     }
 
+    const handler = async (e) => {
+        await fetchSearchBook(e.target.value);
+    }
+
+    const debouncedHandler = useDebounce(handler,1500)
+
     return (
     <>
+        <p>{search}</p>
+        <input onChange={debouncedHandler}/>
         <ul>
             {books.map((item:any) => {
                 return (

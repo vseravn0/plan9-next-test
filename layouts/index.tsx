@@ -17,6 +17,7 @@ export default function Layout({ children }: IReactNodeChildren) {
 
     useEffect(() => {
         setLocale([LANGS[window.navigator.language as keyof typeof LANGS]])
+        console.log(locale)
     }, [])
 
     return (

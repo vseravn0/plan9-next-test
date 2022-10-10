@@ -8,16 +8,33 @@ import Link from "next/link";
 export default function Books() {
     const [books, setBooks] = useState<any>([]);
     const [search, setSearch] = useState<any>('');
+    const {locale} = useContext(LocaleProvider)
+    const [langs, setLangs] = useState(locale.join(','))
 
     let count = 0;
     let page = 1;
 
+
+    useEffect(() => {
+        setLangs(locale.join(','))
+    },[locale])
+
+    useEffect(() => {
+        const test = async () => {
+           await getBooks()
+        }
+        test()
+    },[langs])
+
     const getBooks = async () => {
-        const result = await fetchBooks({page:page})
-        count = result.count
-        if(books.length < count){
-            setBooks(books => [...books,...result.results])
-            page += 1
+        console.log(locale)
+        if(langs.length){
+            const result = await fetchBooks({page:page,languages:langs})
+            count = result.count
+            if(books.length < count){
+                setBooks(books => [...books,...result.results])
+                page += 1
+            }
         }
     }
 
@@ -31,12 +48,6 @@ export default function Books() {
     }
 
     const debouncedHandler = useDebounce(handler,1500)
-
-    const {locale} = useContext(LocaleProvider)
-
-    useEffect(() => {
-        console.log(locale)
-    },[locale])
 
     return (
     <>

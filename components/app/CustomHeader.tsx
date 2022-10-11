@@ -4,7 +4,7 @@ import LocaleProvider from "@components/localeProvider";
 import {useContext} from "react";
 
 export default function CustomHeader() {
-    const {locale} = useContext(LocaleProvider)
+    const [locale] = useContext(LocaleProvider)
 
     return (
         <div>

@@ -12,8 +12,8 @@ export default function Books() {
     const [books, setBooks] = useState<any>([]);
     const {locale} = useLocalContext()
 
-    let count = 0;
-    let page = 1;
+    let count:string | number = 0;
+    let page:string | number = 1;
 
     const prevLocale = usePreviouse(locale)
 
@@ -38,19 +38,6 @@ export default function Books() {
         }
     }
 
-    const getBook = async (id: string) => {
-        await fetchBooks({ids: id})
-        const booksRead = JSON.parse(localStorage.getItem('booksRead'))
-        if (!booksRead) {
-            localStorage.setItem('booksRead', JSON.stringify([id]))
-            return
-        }
-        if (!booksRead.includes(id)) {
-            localStorage.setItem('booksRead', JSON.stringify([...booksRead, id]))
-        }
-
-    }
-
     const handler = async (e) => {
         const result = await fetchSearchBook(e.target.value, {languages: locale.join(',')});
         setBooks(result.results)
@@ -68,6 +55,7 @@ export default function Books() {
                             key={item.id}
                             href={{
                                 pathname: `/books/${item.id}`, query: {
+                                    id: item.id,
                                     title: item.title,
                                     authors: item.authors[0]?.name,
                                     downloads: item.download_count,
@@ -82,7 +70,6 @@ export default function Books() {
                                     title={item.title}
                                     author={item.authors[0]?.name}
                                     downloads={item.download_count}
-                                    handler={() => getBook(item.id)}
                                 />
                             </li>
                         </Link>

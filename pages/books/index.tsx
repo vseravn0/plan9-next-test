@@ -1,16 +1,15 @@
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import usePreviouse from "../../hooks/UsePrevious";
 import Intersection from "@components/app/IntersectionObserver";
 import {fetchBooks, fetchSearchBook} from "../../api/restServices/books";
 import useDebounce from "../../hooks/UseDebounce";
-import LocaleProvider from "@components/localeProvider";
+import {useLocalContext} from "@components/localeProvider";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Books() {
     const [books, setBooks] = useState<any>([]);
-    const [search, setSearch] = useState<any>('');
-    const [locale] = useContext(LocaleProvider)
+    // const [search, setSearch] = useState<any>('');
+    const {locale} = useLocalContext()
 
     let count = 0;
     let page = 1;
@@ -60,9 +59,8 @@ export default function Books() {
 
     return (
         <>
-            <p>{search}</p>
-            <input onChange={debouncedHandler}/>
-            <ul>
+            {/*<input onChange={debouncedHandler}/>*/}
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-4">
                 {books.map((item: any) => {
                     return (
                         <Link
@@ -76,11 +74,11 @@ export default function Books() {
                                 }
                             }
                             }>
-                            <li key={item.id} onClick={() => getBook(item.id)}>
-                                <img src={item.formats['image/jpeg']} alt={item.title}/>
-                                <span>{item.title}</span>
-                                <span>{item.authors[0]?.name}</span>
-                                <span>{item.download_count}</span>
+                            <li className="p-3 border-2 rounded-md border-black flex flex-col text-center  h-auto w-56" key={item.id} onClick={() => getBook(item.id)}>
+                                <img className="object-cover mb-3" src={item.formats['image/jpeg']} alt={item.title}/>
+                                <span className="font-bold">{item.title}</span>
+                                <span className="italic">{item.authors[0]?.name}</span>
+                                <span className="underline">{item.download_count}</span>
                             </li>
                         </Link>
                     )

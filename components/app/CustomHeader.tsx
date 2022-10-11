@@ -1,10 +1,10 @@
 import LanguageCheckBox from "@components/ui/LanguageCheckbox";
 import {LANGS} from "@utils/constants";
-import LocaleProvider from "@components/localeProvider";
-import {useContext} from "react";
+import {useLocalContext} from "@components/localeProvider";
 
 export default function CustomHeader() {
-    const [locale] = useContext(LocaleProvider)
+
+    const {locale} = useLocalContext()
 
     return (
         <div>

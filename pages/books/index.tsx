@@ -40,6 +40,15 @@ export default function Books() {
 
     const getBook = async (id: string) => {
         await fetchBooks({ids: id})
+        const booksRead = JSON.parse(localStorage.getItem('booksRead'))
+        if(!booksRead) {
+            localStorage.setItem('booksRead',JSON.stringify([id]))
+            return
+        }
+        if(!booksRead.includes(id)){
+            localStorage.setItem('booksRead',JSON.stringify([...booksRead,id]))
+        }
+
     }
 
     const handler = async (e) => {

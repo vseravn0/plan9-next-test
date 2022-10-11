@@ -1,14 +1,15 @@
 import {useEffect, useState} from "react";
 import usePreviouse from "../../hooks/UsePrevious";
-import Intersection from "@components/app/IntersectionObserver";
+import IntersectionComponent from "@components/app/IntersectionComponent";
 import {fetchBooks, fetchSearchBook} from "../../api/restServices/books";
 import useDebounce from "../../hooks/UseDebounce";
 import {useLocalContext} from "@components/localeProvider";
 import Link from "next/link";
 
+import BookCard from "@components/ui/BookCard";
+
 export default function Books() {
     const [books, setBooks] = useState<any>([]);
-    // const [search, setSearch] = useState<any>('');
     const {locale} = useLocalContext()
 
     let count = 0;
@@ -64,7 +65,7 @@ export default function Books() {
                 {books.map((item: any) => {
                     return (
                         <Link
-                            key={item.id + 3}
+                            key={item.id}
                             href={{
                                 pathname: `/books/${item.id}`, query: {
                                     title: item.title,
@@ -74,17 +75,22 @@ export default function Books() {
                                 }
                             }
                             }>
-                            <li className="p-3 border-2 rounded-md border-black flex flex-col text-center  h-auto w-56" key={item.id} onClick={() => getBook(item.id)}>
-                                <img className="object-cover mb-3" src={item.formats['image/jpeg']} alt={item.title}/>
-                                <span className="font-bold">{item.title}</span>
-                                <span className="italic">{item.authors[0]?.name}</span>
-                                <span className="underline">{item.download_count}</span>
+                            <li>
+                                <BookCard
+                                    id={item.id}
+                                    img={item.formats['image/jpeg']}
+                                    title={item.title}
+                                    author={item.authors[0]?.name}
+                                    downloads={item.download_count}
+                                    handler={() => getBook(item.id)}
+                                />
+
                             </li>
                         </Link>
                     )
                 })}
             </ul>
-            <Intersection emit={getBooks}/>
+            <IntersectionComponent emit={getBooks}/>
         </>
     )
 }

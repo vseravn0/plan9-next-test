@@ -1,6 +1,6 @@
 import {useEffect,useRef, useState} from "react";
 
-export default function Intersection({emit}) {
+export default function IntersectionComponent({emit}:{emit:() => void}) {
     const [observer, setObserver] = useState<null | IntersectionObserver>(null)
 
     const elementRef = useRef() as React.MutableRefObject<HTMLInputElement>;

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): added redirect">
+    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): added styles &amp; refactor context">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/app/CustomHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/app/CustomHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/localeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/localeProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/LanguageCheckbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LanguageCheckbox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/app/IntersectionObserver.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/app/IntersectionObserver.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/BookCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/BookCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/books/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/books/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +123,7 @@
       <workItem from="1665254765565" duration="31892000" />
       <workItem from="1665376309312" duration="32330000" />
       <workItem from="1665470333342" duration="7855000" />
-      <workItem from="1665521889373" duration="1171000" />
+      <workItem from="1665521889373" duration="1989000" />
     </task>
     <task id="LOCAL-00001" summary="init next app">
       <created>1665254926618</created>
@@ -254,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665474840257</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat(): added styles &amp; refactor context">
+      <created>1665523181388</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1665523181388</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +294,8 @@
     <MESSAGE value="feat(): added setEnv" />
     <MESSAGE value="feat(): added localstorage set method" />
     <MESSAGE value="feat(): added redirect" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(): added redirect" />
+    <MESSAGE value="feat(): added styles &amp; refactor context" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(): added styles &amp; refactor context" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

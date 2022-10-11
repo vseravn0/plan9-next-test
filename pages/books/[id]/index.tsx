@@ -1,14 +1,17 @@
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
+import BookCard from "@components/ui/BookCard";
 
 export default function PostPage() {
     const router = useRouter()
 
     return (
-        <>
-            <h2>{router.query.title}</h2>
-            <h3>{router.query.authors}</h3>
-            <h4>{router.query.downloads}</h4>
-            <h5>{router.query.img}</h5>
-        </>
+        <div className="flex justify-center">
+            <BookCard
+                img={router.query.img! as string}
+                title={router.query.title! as string}
+                author={router.query.author! as string}
+                downloads={router.query.downloads! as string}
+            />
+        </div>
     )
 }

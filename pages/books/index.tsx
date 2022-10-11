@@ -41,12 +41,12 @@ export default function Books() {
     const getBook = async (id: string) => {
         await fetchBooks({ids: id})
         const booksRead = JSON.parse(localStorage.getItem('booksRead'))
-        if(!booksRead) {
-            localStorage.setItem('booksRead',JSON.stringify([id]))
+        if (!booksRead) {
+            localStorage.setItem('booksRead', JSON.stringify([id]))
             return
         }
-        if(!booksRead.includes(id)){
-            localStorage.setItem('booksRead',JSON.stringify([...booksRead,id]))
+        if (!booksRead.includes(id)) {
+            localStorage.setItem('booksRead', JSON.stringify([...booksRead, id]))
         }
 
     }
@@ -75,7 +75,7 @@ export default function Books() {
                                 }
                             }
                             }>
-                            <li>
+                            <li className="flex">
                                 <BookCard
                                     id={item.id}
                                     img={item.formats['image/jpeg']}
@@ -84,7 +84,6 @@ export default function Books() {
                                     downloads={item.download_count}
                                     handler={() => getBook(item.id)}
                                 />
-
                             </li>
                         </Link>
                     )

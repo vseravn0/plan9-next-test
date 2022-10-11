@@ -1,13 +1,13 @@
 interface IBookCard {
-    id: number,
+    id?: number,
     img: string,
     title: string,
     author: string,
-    downloads: number
-    handler: () => {}
+    downloads: number | string,
+    handler?: () => {/**/}
 }
 
-export default function BookCard({id,img,title,author,downloads}:IBookCard) {
+export default function BookCard({id, img, title, author, downloads}: IBookCard) {
 
     return (
         <div className="p-3 border-2 rounded-md border-black flex flex-col text-center  h-auto w-56" key={id}>

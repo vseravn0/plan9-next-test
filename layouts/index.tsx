@@ -10,6 +10,7 @@ export default function Layout({ children }: IReactNodeChildren) {
 
     useEffect(() => {
         userLocale = [LANGS[window.navigator.language as keyof typeof LANGS]]
+        localStorage.setItem('version',process.env.VERSION)
     },[])
 
     const [locale, setLocale] = useState<string[]>(userLocale)

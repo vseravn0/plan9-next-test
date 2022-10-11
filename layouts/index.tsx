@@ -1,33 +1,27 @@
 import {IReactNodeChildren} from "../types/main";
 import CustomHeader from "@components/app/CustomHeader";
-import localeProvider from "@components/localeProvider";
 import {useEffect, useState} from "react";
 import {LANGS} from "@utils/constants";
+import LocaleProvider from "@components/localeProvider";
 
 export default function Layout({ children }: IReactNodeChildren) {
-    const [locale,setLocale] = useState<string[]>([])
 
-    const localeHandler = (locales:string[],lang:string):void => {
-        const _locale = [...locales]
-        _locale.includes(lang)
-            ? _locale.splice(_locale.findIndex((item:string) => item === lang),1)
-            : _locale.push(lang);
-        setLocale(_locale)
-    }
+    let userLocale = ['en']
 
     useEffect(() => {
-        setLocale([LANGS[window.navigator.language as keyof typeof LANGS]])
-        console.log(locale)
-    }, [])
+        userLocale = [LANGS[window.navigator.language as keyof typeof LANGS]]
+    },[])
+
+    const [locale, setLocale] = useState<string[]>(userLocale)
 
     return (
         <>
-            <localeProvider.Provider value={{locale,localeHandler}}>
+            <LocaleProvider.Provider value={[locale,setLocale]}>
                 <CustomHeader/>
                 <div className="border-2 border-rose-500">
                     <main>{children}</main>
                 </div>
-            </localeProvider.Provider>
+            </LocaleProvider.Provider>
         </>
     )
 }

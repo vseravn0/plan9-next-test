@@ -1,5 +1,5 @@
 import {createContext} from "react";
 
-const context = createContext({locale:['en'],localeHandler:(locales: string[], lang: string) => {/**/}});
+const context = createContext();
 
 export default context

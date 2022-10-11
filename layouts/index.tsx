@@ -17,9 +17,9 @@ export default function Layout({ children }: IReactNodeChildren) {
 
     return (
         <>
-            <LocaleProvider.Provider value={[locale,setLocale]}>
+            <LocaleProvider.Provider value={{locale,setLocale}}>
                 <CustomHeader/>
-                <div className="border-2 border-rose-500">
+                <div>
                     <main>{children}</main>
                 </div>
             </LocaleProvider.Provider>

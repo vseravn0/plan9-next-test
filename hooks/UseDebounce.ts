@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-export default function useDebounce(func, delay, cleanUp = false) {
+export default function useDebounce(func:any, delay:number, cleanUp = false) {
     const timeoutRef = useRef();
 
     function clearTimer() {
@@ -12,8 +12,10 @@ export default function useDebounce(func, delay, cleanUp = false) {
 
     useEffect(() => (cleanUp ? clearTimer : undefined), [cleanUp]);
 
-    return (...args) => {
+    return (...args: any) => {
         clearTimer();
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         timeoutRef.current = setTimeout(() => func(...args), delay);
     };
 }

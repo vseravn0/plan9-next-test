@@ -13,32 +13,39 @@ export default function Books() {
     const {locale} = useLocalContext()
 
     let count:string | number = 0;
-    let page:string | number = 1;
+    let page = 1;
 
     const prevLocale = usePreviouse(locale)
 
+    function compare(a1:string[], a2:string[]) {
+        return a1.length == a2.length && a1.every((v,i)=>v === a2[i])
+    }
+
     useEffect(() => {
-        if (prevLocale !== locale) {
+        if (prevLocale && !compare(locale,prevLocale)) {
+            page = 1
             setBooks([])
-            const test = async () => {
+            const handler = async () => {
                 await getBooks()
             }
-            test()
+            handler()
         }
     }, [locale])
 
-    const getBooks = async () => {
-        if (locale.length && prevLocale !== locale) {
+    async function getBooks(){
+        try {
             const result = await fetchBooks({page: page, languages: locale.join(',')})
             count = result.count
             if (books.length < count) {
-                setBooks(books => [...books, ...result.results])
+                setBooks((books: any) => [...books, ...result.results])
                 page += 1
             }
+        } catch (e) {
+            console.log(e)
         }
     }
 
-    const handler = async (e) => {
+    const handler = async (e:React.ChangeEvent<HTMLInputElement>) => {
         const result = await fetchSearchBook(e.target.value, {languages: locale.join(',')});
         setBooks(result.results)
     }
@@ -47,7 +54,9 @@ export default function Books() {
 
     return (
         <>
-            {/*<input onChange={debouncedHandler}/>*/}
+            <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 mx-auto mb-14"
+                   onChange={debouncedHandler}/>
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-4">
                 {books.map((item: any) => {
                     return (

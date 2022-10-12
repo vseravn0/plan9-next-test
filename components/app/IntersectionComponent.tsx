@@ -17,6 +17,6 @@ export default function IntersectionComponent({emit}: { emit: () => void }) {
         observer?.observe(elementRef.current)
     }, [observer])
 
-    return <div ref={elementRef}/>
+    return <div className="h-px w-full" ref={elementRef}/>
 }
 

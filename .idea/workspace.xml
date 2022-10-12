@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): refactored styles &amp; code fragments">
+    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): changed book page logic">
+      <change afterPath="$PROJECT_DIR$/layouts/BookLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/BookCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/BookCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/restServices/books.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/restServices/books.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/app/CustomHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/app/CustomHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/app/IntersectionComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/app/IntersectionComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/LanguageCheckbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LanguageCheckbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/UseDebounce.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/UseDebounce.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/books/[id]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/books/[id]/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/books/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/books/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +128,7 @@
       <workItem from="1665254765565" duration="31892000" />
       <workItem from="1665376309312" duration="32330000" />
       <workItem from="1665470333342" duration="7855000" />
-      <workItem from="1665521889373" duration="6819000" />
+      <workItem from="1665521889373" duration="11788000" />
     </task>
     <task id="LOCAL-00001" summary="init next app">
       <created>1665254926618</created>
@@ -273,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665525192762</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat(): changed book page logic">
+      <created>1665528771283</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1665528771283</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +323,8 @@
     <MESSAGE value="feat(): added styles &amp; refactor context" />
     <MESSAGE value="feat(): added bookcard component" />
     <MESSAGE value="feat(): refactored styles &amp; code fragments" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(): refactored styles &amp; code fragments" />
+    <MESSAGE value="feat(): changed book page logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(): changed book page logic" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

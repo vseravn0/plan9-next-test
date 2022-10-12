@@ -7,7 +7,7 @@ export default function CustomHeader() {
     const {locale} = useLocalContext()
 
     return (
-        <div>
+        <div className="flex justify-center my-5 gap-2">
             {Object.keys(LANGS).map((lang:string) => {
                 return (
                     <LanguageCheckBox

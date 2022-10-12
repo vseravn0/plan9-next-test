@@ -6,8 +6,8 @@ interface IBooks {
 }
 
 interface IBooksParams {
-     languages?: string[],
-     page?: string,
+     languages?: string,
+     page?: number,
      ids?: string
 }
 

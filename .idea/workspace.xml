@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): changes">
+      <change afterPath="$PROJECT_DIR$/hooks/UseIntersectionObserver.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/app/IntersectionComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/app/IntersectionComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/books/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/books/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

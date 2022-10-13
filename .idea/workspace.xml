@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): changed book page logic">
-      <change afterPath="$PROJECT_DIR$/layouts/BookLayout.tsx" afterDir="false" />
+    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/restServices/books.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/restServices/books.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/app/CustomHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/app/CustomHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/app/IntersectionComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/app/IntersectionComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/LanguageCheckbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LanguageCheckbox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/UseDebounce.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/UseDebounce.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/books/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/books/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="dev" />
@@ -34,6 +29,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -45,12 +41,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1665254022" />
+                    <option name="branchName" value="test/observer-component" />
+                    <option name="lastUsedInstant" value="1665635114" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="dev" />
-                    <option name="lastUsedInstant" value="1665253997" />
+                    <option name="lastUsedInstant" value="1665605019" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1665254022" />
                   </RecentBranch>
                 </list>
               </option>
@@ -65,6 +65,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Frb387YAz8X6H1fqXbElDNC1ua" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -113,6 +114,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -129,6 +131,8 @@
       <workItem from="1665376309312" duration="32330000" />
       <workItem from="1665470333342" duration="7855000" />
       <workItem from="1665521889373" duration="11788000" />
+      <workItem from="1665555105564" duration="124000" />
+      <workItem from="1665565566807" duration="11815000" />
     </task>
     <task id="LOCAL-00001" summary="init next app">
       <created>1665254926618</created>
@@ -324,7 +328,8 @@
     <MESSAGE value="feat(): added bookcard component" />
     <MESSAGE value="feat(): refactored styles &amp; code fragments" />
     <MESSAGE value="feat(): changed book page logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(): changed book page logic" />
+    <MESSAGE value="feat(): changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(): changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

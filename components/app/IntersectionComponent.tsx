@@ -1,21 +1,30 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef} from "react";
 
-export default function IntersectionComponent({emit}: { emit: () => void }) {
-    const [observer, setObserver] = useState<null | IntersectionObserver>(null)
+export default function IntersectionComponent({page,emit}) {
 
     const elementRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-    useEffect(() => {
-        setObserver(new IntersectionObserver(([entry]: IntersectionObserverEntry[]) => {
-            if (entry && entry.isIntersecting) {
-                emit()
-            }
-        }))
-    }, [])
+    // console.log(page)
+
+    function callbackFunc(entries,test) {
+        // console.log(test)
+        const [entry] = entries
+        if(entry && entry.isIntersecting){
+            emit()
+        }
+    }
 
     useEffect(() => {
-        observer?.observe(elementRef.current)
-    }, [observer])
+        const observer = new IntersectionObserver((entries) => callbackFunc(entries,page))
+        if(elementRef.current) {
+            observer?.observe(elementRef.current)
+        }
+        return () => {
+            if(elementRef.current) {
+                observer?.unobserve(elementRef.current)
+            }
+        }
+    }, [elementRef])
 
     return <div className="h-px w-full" ref={elementRef}/>
 }

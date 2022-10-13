@@ -9,11 +9,12 @@ import Link from "next/link";
 import BookCard from "@components/ui/BookCard";
 
 export default function Books() {
-    const [books, setBooks] = useState<any>([]);
     const {locale} = useLocalContext()
+    const [books, setBooks] = useState<any>([]);
+    const [page, setPage] = useState<number>(1);
 
     let count:string | number = 0;
-    let page = 1;
+    // let page = 1;
 
     const prevLocale = usePreviouse(locale)
 
@@ -23,7 +24,7 @@ export default function Books() {
 
     useEffect(() => {
         if (prevLocale && !compare(locale,prevLocale)) {
-            page = 1
+            setPage(1)
             setBooks([])
             const handler = async () => {
                 await getBooks()
@@ -34,11 +35,11 @@ export default function Books() {
 
     async function getBooks(){
         try {
-            const result = await fetchBooks({page: page, languages: locale.join(',')})
+            const result = await fetchBooks({page:page,languages:locale.join(',')})
             count = result.count
             if (books.length < count) {
                 setBooks((books: any) => [...books, ...result.results])
-                page += 1
+                setPage(prevPage => prevPage + 1)
             }
         } catch (e) {
             console.log(e)
@@ -50,10 +51,11 @@ export default function Books() {
         setBooks(result.results)
     }
 
-    const debouncedHandler = useDebounce(handler, 1500)
+    const debouncedHandler = useDebounce(handler, 500)
 
     return (
         <>
+            <button onClick={getBooks}>1</button>
             <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 mx-auto mb-14"
                    onChange={debouncedHandler}/>
@@ -85,7 +87,7 @@ export default function Books() {
                     )
                 })}
             </ul>
-            <IntersectionComponent emit={getBooks}/>
+            <IntersectionComponent page={page} emit={getBooks}/>
         </>
     )
 }

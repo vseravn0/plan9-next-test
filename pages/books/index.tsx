@@ -1,7 +1,8 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import usePreviouse from "../../hooks/UsePrevious";
 import IntersectionComponent from "@components/app/IntersectionComponent";
 import {fetchBooks, fetchSearchBook} from "../../api/restServices/books";
+import useIntersectionObserver from "../../hooks/UseIntersectionObserver";
 import useDebounce from "../../hooks/UseDebounce";
 import {useLocalContext} from "@components/localeProvider";
 import Link from "next/link";
@@ -12,9 +13,10 @@ export default function Books() {
     const {locale} = useLocalContext()
     const [books, setBooks] = useState<any>([]);
     const [page, setPage] = useState<number>(1);
+    const elementRef = useRef<HTMLDivElement | null>(null)
+    const entry = useIntersectionObserver(elementRef, {})
 
     let count:string | number = 0;
-    // let page = 1;
 
     const prevLocale = usePreviouse(locale)
 
@@ -23,13 +25,23 @@ export default function Books() {
     }
 
     useEffect(() => {
+        if(entry && entry?.isIntersecting){
+            const fetchHandler = async () => {
+                await getBooks()
+            }
+            fetchHandler()
+        }
+
+    },[entry])
+
+    useEffect(() => {
         if (prevLocale && !compare(locale,prevLocale)) {
             setPage(1)
             setBooks([])
-            const handler = async () => {
+            const fetchHandler = async () => {
                 await getBooks()
             }
-            handler()
+            fetchHandler()
         }
     }, [locale])
 
@@ -87,7 +99,7 @@ export default function Books() {
                     )
                 })}
             </ul>
-            <IntersectionComponent page={page} emit={getBooks}/>
+            <div className="h-px w-full" ref={elementRef}/>
         </>
     )
 }

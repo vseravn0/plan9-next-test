@@ -32,12 +32,12 @@ export default function Books() {
             fetchHandler()
         }
 
-    },[entry])
+    },[entry?.isIntersecting])
 
     useEffect(() => {
         if (prevLocale && !compare(locale,prevLocale)) {
             setPage(1)
-            setBooks([])
+            setBooks( [])
             const fetchHandler = async () => {
                 await getBooks()
             }
@@ -67,7 +67,6 @@ export default function Books() {
 
     return (
         <>
-            <button onClick={getBooks}>1</button>
             <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 mx-auto mb-14"
                    onChange={debouncedHandler}/>

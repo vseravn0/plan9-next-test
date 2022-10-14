@@ -1,6 +1,5 @@
 import {useEffect, useState, useRef} from "react";
 import usePreviouse from "../../hooks/UsePrevious";
-import IntersectionComponent from "@components/app/IntersectionComponent";
 import {fetchBooks, fetchSearchBook} from "../../api/restServices/books";
 import useIntersectionObserver from "../../hooks/UseIntersectionObserver";
 import useDebounce from "../../hooks/UseDebounce";
@@ -19,42 +18,41 @@ export default function Books() {
     let count:string | number = 0;
 
     const prevLocale = usePreviouse(locale)
+    let prevPage = usePreviouse(page)
+    let isLoading = false
 
     function compare(a1:string[], a2:string[]) {
         return a1.length == a2.length && a1.every((v,i)=>v === a2[i])
     }
 
     useEffect(() => {
-        if(entry && entry?.isIntersecting){
-            const fetchHandler = async () => {
-                await getBooks()
-            }
-            fetchHandler()
+        if(entry && entry?.isIntersecting && books.length !== 0){
+            setPage(prevPage => prevPage + 1)
         }
-
     },[entry?.isIntersecting])
 
     useEffect(() => {
-        if (prevLocale && !compare(locale,prevLocale)) {
-            setPage(1)
-            setBooks( [])
-            const fetchHandler = async () => {
-                await getBooks()
-            }
-            fetchHandler()
+        if(prevLocale && !compare(locale,prevLocale)){
+            setPage(1);
+            setBooks( []);
         }
-    }, [locale])
+        if(prevPage !== page && !isLoading){
+            getBooks({page:page,languages:locale.join(',')})
+        }
+    }, [page,locale])
 
-    async function getBooks(){
+    async function getBooks(params:any){
+        isLoading = true
         try {
-            const result = await fetchBooks({page:page,languages:locale.join(',')})
+            const result = await fetchBooks(params)
             count = result.count
             if (books.length < count) {
                 setBooks((books: any) => [...books, ...result.results])
-                setPage(prevPage => prevPage + 1)
             }
         } catch (e) {
             console.log(e)
+        } finally {
+            isLoading = false
         }
     }
 

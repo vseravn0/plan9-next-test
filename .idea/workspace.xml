@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): changes">
-      <change afterPath="$PROJECT_DIR$/hooks/UseIntersectionObserver.tsx" afterDir="false" />
+    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): deleted IntersectionObserverComponent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/books/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/books/index.tsx" afterDir="false" />
     </list>
@@ -288,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665528771283</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat(): deleted IntersectionObserverComponent">
+      <created>1665639391528</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1665639391528</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +335,8 @@
     <MESSAGE value="feat(): refactored styles &amp; code fragments" />
     <MESSAGE value="feat(): changed book page logic" />
     <MESSAGE value="feat(): changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(): changes" />
+    <MESSAGE value="feat(): deleted IntersectionObserverComponent" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(): deleted IntersectionObserverComponent" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

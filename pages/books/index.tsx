@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import usePreviouse from "../../hooks/UsePrevious";
-import IntersectionComponent from "@components/app/IntersectionComponent";
 import {fetchBooks, fetchSearchBook} from "../../api/restServices/books";
+import useIntersectionObserver from "../../hooks/UseIntersectionObserver";
 import useDebounce from "../../hooks/UseDebounce";
 import {useLocalContext} from "@components/localeProvider";
 import Link from "next/link";
@@ -9,39 +9,50 @@ import Link from "next/link";
 import BookCard from "@components/ui/BookCard";
 
 export default function Books() {
-    const [books, setBooks] = useState<any>([]);
     const {locale} = useLocalContext()
+    const [books, setBooks] = useState<any>([]);
+    const [page, setPage] = useState<number>(1);
+    const elementRef = useRef<HTMLDivElement | null>(null)
+    const entry = useIntersectionObserver(elementRef, {})
 
     let count:string | number = 0;
-    let page = 1;
 
     const prevLocale = usePreviouse(locale)
+    let prevPage = usePreviouse(page)
+    let isLoading = false
 
     function compare(a1:string[], a2:string[]) {
         return a1.length == a2.length && a1.every((v,i)=>v === a2[i])
     }
 
     useEffect(() => {
-        if (prevLocale && !compare(locale,prevLocale)) {
-            page = 1
-            setBooks([])
-            const handler = async () => {
-                await getBooks()
-            }
-            handler()
+        if(entry && entry?.isIntersecting && books.length !== 0){
+            setPage(prevPage => prevPage + 1)
         }
-    }, [locale])
+    },[entry?.isIntersecting])
 
-    async function getBooks(){
+    useEffect(() => {
+        if(prevLocale && !compare(locale,prevLocale)){
+            setPage(1);
+            setBooks( []);
+        }
+        if(prevPage !== page && !isLoading){
+            getBooks({page:page,languages:locale.join(',')})
+        }
+    }, [page,locale])
+
+    async function getBooks(params:any){
+        isLoading = true
         try {
-            const result = await fetchBooks({page: page, languages: locale.join(',')})
+            const result = await fetchBooks(params)
             count = result.count
             if (books.length < count) {
                 setBooks((books: any) => [...books, ...result.results])
-                page += 1
             }
         } catch (e) {
             console.log(e)
+        } finally {
+            isLoading = false
         }
     }
 
@@ -50,7 +61,7 @@ export default function Books() {
         setBooks(result.results)
     }
 
-    const debouncedHandler = useDebounce(handler, 1500)
+    const debouncedHandler = useDebounce(handler, 500)
 
     return (
         <>
@@ -85,7 +96,7 @@ export default function Books() {
                     )
                 })}
             </ul>
-            <IntersectionComponent emit={getBooks}/>
+            <div className="h-px w-full" ref={elementRef}/>
         </>
     )
 }

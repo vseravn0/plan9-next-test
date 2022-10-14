@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from "react";
 import usePreviouse from "../../hooks/UsePrevious";
-import {fetchBooks, fetchSearchBook} from "../../api/restServices/books";
+import {fetchBooks} from "../../api/restServices/books";
 import useIntersectionObserver from "../../hooks/UseIntersectionObserver";
 import useDebounce from "../../hooks/UseDebounce";
 import {useLocalContext} from "@components/localeProvider";
@@ -12,6 +12,7 @@ export default function Books() {
     const {locale} = useLocalContext()
     const [books, setBooks] = useState<any>([]);
     const [page, setPage] = useState<number>(1);
+    const [searchText, setSearchText] = useState<string>('');
     const elementRef = useRef<HTMLDivElement | null>(null)
     const entry = useIntersectionObserver(elementRef, {})
 
@@ -19,10 +20,16 @@ export default function Books() {
 
     const prevLocale = usePreviouse(locale)
     let prevPage = usePreviouse(page)
+    const prevSearchText = usePreviouse(searchText)
     let isLoading = false
 
     function compare(a1:string[], a2:string[]) {
         return a1.length == a2.length && a1.every((v,i)=>v === a2[i])
+    }
+
+    const setDefaultFetchBooksState = () => {
+        setPage(1);
+        setBooks( []);
     }
 
     useEffect(() => {
@@ -32,19 +39,18 @@ export default function Books() {
     },[entry?.isIntersecting])
 
     useEffect(() => {
-        if(prevLocale && !compare(locale,prevLocale)){
-            setPage(1);
-            setBooks( []);
+        if(prevLocale && !compare(locale,prevLocale) || prevSearchText !== searchText){
+            setDefaultFetchBooksState()
         }
-        if(prevPage !== page && !isLoading){
-            getBooks({page:page,languages:locale.join(',')})
+        if(prevPage !== page && !isLoading || prevSearchText !== searchText || prevLocale && !compare(locale,prevLocale)){
+            getBooks()
         }
-    }, [page,locale])
+    }, [page,locale,searchText])
 
-    async function getBooks(params:any){
+    async function getBooks(){
         isLoading = true
         try {
-            const result = await fetchBooks(params)
+            const result = await fetchBooks(searchText,{page,languages:locale.join(',')})
             count = result.count
             if (books.length < count) {
                 setBooks((books: any) => [...books, ...result.results])
@@ -56,9 +62,8 @@ export default function Books() {
         }
     }
 
-    const handler = async (e:React.ChangeEvent<HTMLInputElement>) => {
-        const result = await fetchSearchBook(e.target.value, {languages: locale.join(',')});
-        setBooks(result.results)
+    const handler = (e:React.ChangeEvent<HTMLInputElement>) => {
+        setSearchText(() => e.target.value)
     }
 
     const debouncedHandler = useDebounce(handler, 500)

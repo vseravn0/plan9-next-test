@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): small fixes">
+    <list default="true" id="457b333c-4cf2-4343-bd77-ae6a33d8aa88" name="Changes" comment="feat(): changed strict mode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example-dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/example-dev.env" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665830058436</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat(): changed strict mode">
+      <created>1665830425642</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1665830425642</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +345,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat(): deleted extra" />
     <MESSAGE value="feat(): init env" />
     <MESSAGE value="feat(): init lint &amp; prettier &amp; tw" />
     <MESSAGE value="feat(): changed config files" />
@@ -363,7 +369,8 @@
     <MESSAGE value="feat(): deleted IntersectionObserverComponent" />
     <MESSAGE value="feat(): changed get books logic" />
     <MESSAGE value="feat(): small fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(): small fixes" />
+    <MESSAGE value="feat(): changed strict mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(): changed strict mode" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

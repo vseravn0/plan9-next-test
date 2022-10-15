@@ -1,9 +1,10 @@
 import {useEffect, useState, useRef} from "react";
-import usePreviouse from "../../hooks/UsePrevious";
 import {fetchBooks} from "../../api/restServices/books";
+import usePreviouse from "../../hooks/UsePrevious";
 import useIntersectionObserver from "../../hooks/UseIntersectionObserver";
 import useDebounce from "../../hooks/UseDebounce";
 import {useLocalContext} from "@components/localeProvider";
+import {compare} from "@utils/helper";
 import Link from "next/link";
 
 import BookCard from "@components/ui/BookCard";
@@ -19,13 +20,9 @@ export default function Books() {
     let count:string | number = 0;
 
     const prevLocale = usePreviouse(locale)
-    let prevPage = usePreviouse(page)
+    const prevPage = usePreviouse(page)
     const prevSearchText = usePreviouse(searchText)
     let isLoading = false
-
-    function compare(a1:string[], a2:string[]) {
-        return a1.length == a2.length && a1.every((v,i)=>v === a2[i])
-    }
 
     const setDefaultFetchBooksState = () => {
         setPage(1);
@@ -39,10 +36,14 @@ export default function Books() {
     },[entry?.isIntersecting])
 
     useEffect(() => {
-        if(prevLocale && !compare(locale,prevLocale) || prevSearchText !== searchText){
+        if(prevLocale && !compare(locale,prevLocale)
+            || prevSearchText !== searchText){
             setDefaultFetchBooksState()
         }
-        if(prevPage !== page && !isLoading || prevSearchText !== searchText || prevLocale && !compare(locale,prevLocale)){
+        if(prevPage !== page
+            && !isLoading
+            || prevSearchText !== searchText
+            || prevLocale && !compare(locale,prevLocale)){
             getBooks()
         }
     }, [page,locale,searchText])
